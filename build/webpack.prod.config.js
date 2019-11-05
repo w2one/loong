@@ -57,7 +57,7 @@ module.exports = merge(common, {
     // new BundleAnalyzerPlugin({
     //   analyzerPort: 8889
     // }),
-    new webpack.BannerPlugin("Build in " + new Date())
+    new webpack.BannerPlugin("Build in " + new Date().toLocaleString())
     // zip
     // new ZipPlugin({
     //   // path: "../",
@@ -90,7 +90,8 @@ module.exports = merge(common, {
             // comments: false
             comments: /Build in/i
           }
-        }
+        },
+        extractComments: false
       })
     ],
     splitChunks: {
@@ -107,7 +108,7 @@ module.exports = merge(common, {
         // packaged css in one file
         styles: {
           name: "styles",
-          test: /\.(less|css)$/,
+          test: /\.(less|css|scss)$/,
           chunks: "all",
           minChunks: 1,
           reuseExistingChunk: true,
