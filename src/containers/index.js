@@ -13,6 +13,7 @@ import {
 import Loading from "@components/Loading";
 
 const Login = lazy(() => import(/* webpackChunkName: "login" */ "./Login"));
+const Demo = lazy(() => import(/* webpackChunkName: "Demo" */ "./Demo"));
 const Main = lazy(() => import(/* webpackChunkName: "main" */ "./Main"));
 
 function App(props) {
@@ -21,6 +22,7 @@ function App(props) {
       <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path={`/login`} component={Login} />
+          <Route exact path={`/demo`} component={Demo} />
           <PrivateRoute path={`/`} component={Main} {...props} />
         </Switch>
       </Suspense>
