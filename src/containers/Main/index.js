@@ -8,9 +8,24 @@ import Style from "./style";
 const Home = lazy(() => import(/* webpackChunkName: "Home" */ "../Home"));
 const About = lazy(() => import(/* webpackChunkName: "About" */ "../About"));
 
+// 路由配置
 const map = {
-  "/": "首页",
-  "/about": "关于"
+  "/": {
+    title: "首页",
+    back: false
+  },
+  "/about": {
+    title: "关于",
+    back: false
+  },
+  "/about/first": {
+    title: "关于1",
+    back: true
+  },
+  "/about/second": {
+    title: "关于二级页面",
+    back: true
+  }
 };
 
 function Main({
@@ -19,17 +34,19 @@ function Main({
   }
 }) {
   const [title, setTitle] = useState("");
+  const [back, setBack] = useState(false);
   useEffect(() => {
-    const str = map[pathname];
-    setTitle(str);
-    document.title = str;
+    const route = map[pathname];
+    // console.log(location);
+    setTitle(route.title);
+    setBack(route.back);
+    document.title = route.title;
   }, [pathname]);
 
   return (
     <div className={Style.main}>
       {/* 顶部nav */}
-
-      <Nav title={title} />
+      <Nav title={title} back={back} />
       <div className={Style.container}>
         <Suspense fallback={<Loading />}>
           <Switch>
@@ -39,9 +56,8 @@ function Main({
           </Switch>
         </Suspense>
       </div>
-
       {/* 菜单 */}
-      <Menu />
+      {["/", "/about", "/about/"].includes(pathname) && <Menu />}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import * as React from "react";
 import { withRouter } from "react-router-dom";
 import Style from "./style";
 
-const Nav = props => (
+const Nav = (props) => (
   <div className={Style.nav}>
     {props.back && (
       <div className={Style.left} onClick={props.history.goBack}>
