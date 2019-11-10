@@ -8,3 +8,4 @@ export { default as Button } from "./Button";
 export { default as Input } from "./Input";
 export { default as Loading } from "./Loading";
 export { default as Menu } from "./Menu";
+export { default as Pdf } from "./Pdf";
