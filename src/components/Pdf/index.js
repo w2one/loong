@@ -1,11 +1,16 @@
+/**
+ * pdf
+ */
 import React from "react";
 import PDFJS from "pdfjs-dist";
+import "./style";
 
-class App extends React.Component {
-  componentDidMount() {
-    this.loadPDF(this.props.file && this.props.file.split("?")[0]);
-  }
-  loadPDF = (fileURL) => {
+function PDF(props) {
+  React.useEffect(() => {
+    loadPDF(props.file && props.file.split("?")[0]);
+  }, [props.file]);
+
+  const loadPDF = (fileURL) => {
     PDFJS.getDocument(fileURL).then(function(pdf) {
       //用 promise 获取页面
       var id = "";
@@ -42,9 +47,8 @@ class App extends React.Component {
       }
     });
   };
-  render() {
-    return <div className="pdfBox" />;
-  }
+
+  return <div className="pdfBox" />;
 }
 
-export default App;
+export default PDF;
