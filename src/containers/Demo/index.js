@@ -6,23 +6,27 @@ function Item(props) {
   return (
     <div
       style={
-        props.data.weekday !== 0 && props.data.weekday !== 6
+        props.data[props.dayItem.date]
           ? {
               color: "red"
             }
           : null
       }
     >
-      {props.data.day}
+      {props.dayItem.day}
     </div>
   );
 }
 
 export class Demo extends Component {
   render() {
+    const data = {
+      "2019-11-1": { name: "jay" },
+      "2019-11-2": { name: "jay" }
+    };
     return (
       <div>
-        <Calendar data={[]} firstWeek={1} component={Item} />
+        <Calendar data={data} firstWeek={1} component={Item} />
       </div>
     );
   }

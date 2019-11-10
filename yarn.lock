@@ -6275,10 +6275,10 @@ mz@^2.7.0:
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
 
-n-calendar@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/n-calendar/-/n-calendar-0.0.1.tgz#fd3531f7ab19e36da82248b83c168edcd77755a3"
-  integrity sha512-QI5CdJCPy4plKLfkt0RMejJlPNSJQJP1+fVSfVp4XUSs8grwyBBa/U7va0t4MUt9i2r3CsxxMntH6o3Q5GUe0g==
+n-calendar@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/n-calendar/-/n-calendar-0.0.2.tgz#3050573cbfa99fd5f34bb7d8b7e61f5da029490e"
+  integrity sha512-GbK+E/Dbq3ytnInif7hIwDFPMBvohZfdqgpgojbeXu5dhyUKFd+M0Efr6w9MCFHVnTw/9sSe/JpR+N88KL+PGQ==
 
 nan@^2.12.1, nan@^2.13.2:
   version "2.14.0"
