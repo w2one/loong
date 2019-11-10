@@ -6,7 +6,7 @@ function Storage(storage = sessionStorage) {
   /**
    * get
    */
-  this.get = key => {
+  this.get = (key) => {
     const item = storage.getItem(key);
     try {
       return JSON.parse(item);
@@ -23,7 +23,7 @@ function Storage(storage = sessionStorage) {
   /**
    * remove
    */
-  this.remove = key => storage.removeItem(key);
+  this.remove = (key) => storage.removeItem(key);
 
   /**
    * clear

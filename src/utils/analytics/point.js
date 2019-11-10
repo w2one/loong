@@ -47,7 +47,7 @@ const findParentSpm = (element, spmArray) => {
   }
 };
 
-const send = data => {
+const send = (data) => {
   let params = {
     url: document.URL,
     referrer: document.referrer,

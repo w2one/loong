@@ -3,7 +3,7 @@
  */
 import request from "./request";
 
-const error = data => {
+const error = (data) => {
   console.log("error", data);
   request(data);
 };

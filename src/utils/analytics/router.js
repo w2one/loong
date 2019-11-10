@@ -17,7 +17,7 @@ function router() {
     };
   });
 
-  window.addEventListener("hashchange", e => {
+  window.addEventListener("hashchange", (e) => {
     const trackVo = {
       time: window.track ? new Date().getTime() - window.track.time : 0,
       pre: window.track ? window.track.current : "",

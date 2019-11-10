@@ -7,12 +7,12 @@ export const DictContext = createContext({ value: {} });
 
 export function withDict(Component) {
   const displayName = Component.name;
-  const C = props => {
+  const C = (props) => {
     const { wrappedComponentRef, ...remainingProps } = props;
 
     return (
       <DictContext.Consumer>
-        {context => <Component {...remainingProps} {...context} ref={wrappedComponentRef} />}
+        {(context) => <Component {...remainingProps} {...context} ref={wrappedComponentRef} />}
       </DictContext.Consumer>
     );
   };
