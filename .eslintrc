@@ -35,13 +35,7 @@
     "react/sort-comp": [
       "error",
       {
-        "order": [
-          "static-methods",
-          "lifecycle",
-          "/^on.+$/",
-          "everything-else",
-          "render"
-        ],
+        "order": ["static-methods", "lifecycle", "/^on.+$/", "everything-else", "render"],
         "groups": {
           "lifecycle": [
             "displayName",
