@@ -3,15 +3,23 @@ import * as React from "react";
 import { withRouter } from "react-router-dom";
 import Style from "./style";
 
-const Nav = (props) => (
-  <div className={Style.nav}>
-    {props.back && (
-      <div className={Style.left} onClick={props.history.goBack}>
-        <i className="arrow-left"></i>
-      </div>
-    )}
-    <div className={Style.title}>{props.title}</div>
-  </div>
-);
+const Nav = (props) => {
+  function fnBack() {
+    // props.history.goBack;
+    const { back = -1, history } = props;
+    console.log("back", back);
+    history.go(back);
+  }
+  return (
+    <div className={Style.nav}>
+      {props.back !== undefined && (
+        <div className={Style.left} onClick={fnBack}>
+          <i className="arrow-left"></i>
+        </div>
+      )}
+      <div className={Style.title}>{props.title}</div>
+    </div>
+  );
+};
 
 export default withRouter(Nav);

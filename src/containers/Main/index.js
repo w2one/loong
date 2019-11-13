@@ -11,20 +11,22 @@ const About = lazy(() => import(/* webpackChunkName: "About" */ "../About"));
 // 路由配置
 const map = {
   "/": {
-    title: "首页",
-    back: false
+    title: "首页"
   },
   "/about": {
-    title: "关于",
-    back: false
+    title: "关于"
   },
   "/about/first": {
     title: "关于1",
-    back: true
+    back: -1
   },
   "/about/second": {
     title: "关于二级页面",
-    back: true
+    back: -1
+  },
+  "/about/third": {
+    title: "三级页面",
+    back: -2
   }
 };
 
