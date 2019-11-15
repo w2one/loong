@@ -214,6 +214,9 @@ module.exports = {
   },
   plugins: [
     new webpack.ProgressPlugin(),
+    // moment local
+    // eslint-disable-next-line no-useless-escape
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-cn|es-us/),
     new CleanWebpackPlugin({
       // cleanOnceBeforeBuildPatterns: ["**/*", "!dll/**"]
     }),

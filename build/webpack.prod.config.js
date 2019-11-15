@@ -10,8 +10,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const merge = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const ZipPlugin = require("zip-webpack-plugin");
 const CloudStorageWebpackPlugin = require("cloud-storage-webpack-plugin");
 const common = require("./webpack.base.config.js");
@@ -54,9 +53,9 @@ module.exports = merge(common, {
       chunkFilename: "css/[name].[hash:6].css"
     }),
     // Analyzer bundle
-    // new BundleAnalyzerPlugin({
-    //   analyzerPort: 8889
-    // }),
+    new BundleAnalyzerPlugin({
+      analyzerPort: 8889
+    }),
     new webpack.BannerPlugin("Build in " + new Date().toLocaleString())
     // zip
     // new ZipPlugin({
