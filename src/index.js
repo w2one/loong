@@ -7,6 +7,9 @@ import ReactDOM from "react-dom";
 import App from "./app";
 import "@utils/rem";
 
+import moment from "moment";
+console.log(moment);
+
 // analytics
 // import { analytics, timing } from "@utils/analytics";
 
