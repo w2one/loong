@@ -11,14 +11,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   entry: {
-    react: [
-      "react",
-      "react-dom",
-      "redux",
-      "react-redux",
-      "redux-thunk",
-      "react-router-dom"
-    ]
+    react: ["react", "react-dom", "redux", "react-redux", "redux-thunk", "react-router-dom"]
   },
   output: {
     path: path.join(__dirname, "../dll"),
