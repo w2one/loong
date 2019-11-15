@@ -127,7 +127,7 @@ const cssLoader = [
       },
       postcssLoader,
       {
-        loader: "sass-loader",
+        loader: "sass-loader"
         // options: {
         //   javascriptEnabled: true
         // }
@@ -162,7 +162,7 @@ const cssLoader = [
       },
       postcssLoader,
       {
-        loader: "sass-loader",
+        loader: "sass-loader"
         // options: {
         //   javascriptEnabled: true
         // }
@@ -210,7 +210,7 @@ module.exports = {
       "@utils": path.resolve(__dirname, "../src/utils/"),
       "@image": path.resolve(__dirname, "../src/static/images/")
     },
-    extensions: [".js", ".css", ".less",".scss"]
+    extensions: [".js", ".css", ".less", ".scss"]
   },
   plugins: [
     new webpack.ProgressPlugin(),
