@@ -18,15 +18,16 @@ body,
 body {
   background-color: #fff;
 }
+
 #root {
   display: flex;
   flex-direction: column;
-  width: 100%;
   flex: 1;
-  //   max-width: 7.5rem;
-  //   margin: 0 auto;
+  // prettier-ignore
+  max-width: 750PX; // ignored
+  margin: 0 auto;
   position: relative;
-  //   box-shadow: 0 0 1rem 0 #5c99e7;
+  box-shadow: 0 0 1rem 0 #5c99e7;
 }
 
 body {

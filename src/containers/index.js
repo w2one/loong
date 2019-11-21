@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import Loading from "@components/Loading";
 
+// lazy load
 const Login = lazy(() => import(/* webpackChunkName: "login" */ "./Login"));
 const Main = lazy(() => import(/* webpackChunkName: "main" */ "./Main"));
 

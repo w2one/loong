@@ -3,7 +3,7 @@
  * request
  */
 
-import { BASE_API } from "../config";
+import { BASE_API } from "@config";
 import Toast from "@components/Toast";
 import { Session as Storage } from "@utils/storage";
 

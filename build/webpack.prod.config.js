@@ -53,9 +53,9 @@ module.exports = merge(common, {
       chunkFilename: "css/[name].[hash:6].css"
     }),
     // Analyzer bundle
-    new BundleAnalyzerPlugin({
-      analyzerPort: 8889
-    }),
+    // new BundleAnalyzerPlugin({
+    //   analyzerPort: 8889
+    // }),
     new webpack.BannerPlugin("Build in " + new Date().toLocaleString())
     // zip
     // new ZipPlugin({

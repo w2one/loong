@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /**
  * entry
  */
@@ -7,14 +6,10 @@ import ReactDOM from "react-dom";
 import App from "./app";
 import "@utils/rem";
 
-import moment from "moment";
-console.log(moment);
-
 // analytics
 // import { analytics, timing } from "@utils/analytics";
 
 import FastClick from "fastclick";
-
 FastClick.attach(document.body);
 
 if (process.env.NODE_ENV !== "production") {

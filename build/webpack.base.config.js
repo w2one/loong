@@ -6,12 +6,12 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-// const CopyPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ENV = process.env.NODE_ENV || "development";
 const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
 // ant theme
-const theme = require("../theme.json");
+const theme = require("../config/theme.json");
 
 /**
  * px to rem
@@ -197,12 +197,23 @@ module.exports = {
           cacheDirectory: true
         }
       },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: "html-loader",
+          options: {
+            attrs: ["img:src", "img:data-src", "audio:src"],
+            minimize: true
+          }
+        }
+      },
       ...cssLoader
     ]
   },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "../src/"),
+      "@config": path.resolve(__dirname, "../config/"),
       "@containers": path.resolve(__dirname, "../src/containers/"),
       "@components": path.resolve(__dirname, "../src/components/"),
       "@contexts": path.resolve(__dirname, "../src/contexts/"),
@@ -210,7 +221,7 @@ module.exports = {
       "@utils": path.resolve(__dirname, "../src/utils/"),
       "@image": path.resolve(__dirname, "../src/static/images/")
     },
-    extensions: [".js", ".css", ".less", ".scss"]
+    extensions: [".js", ".less", ".scss"]
   },
   plugins: [
     new webpack.ProgressPlugin(),
@@ -220,15 +231,15 @@ module.exports = {
     new CleanWebpackPlugin({
       // cleanOnceBeforeBuildPatterns: ["**/*", "!dll/**"]
     }),
-    // new CopyPlugin([{ from: "static/", to: "static/" }]),
+    // new CopyPlugin([{ from: "public/static/", to: "static/" }]),
     new webpack.DllReferencePlugin({
       manifest: require("../dll/react.manifest.json")
     }),
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: "./src/index.html",
+      template: "./public/index.html",
       title: "React",
-      favicon: "./src/static/images/favicon.ico",
+      favicon: "./public/favicon.ico",
       inject: true,
       minify: ENV === "production" && {
         removeComments: true,
@@ -240,8 +251,9 @@ module.exports = {
     }),
     new AddAssetHtmlPlugin({
       filepath: path.resolve(__dirname, "../dll/*.dll.js"),
-      outputPath: "dll",
-      publicPath: "dll",
+      outputPath: "js",
+      publicPath: "js",
+      hash: true,
       includeSourcemap: false
     }),
     new webpack.DefinePlugin({
