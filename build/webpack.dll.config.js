@@ -34,8 +34,8 @@ module.exports = {
           cache: true,
           compress: { warnings: false, drop_console: true },
           output: {
-            // comments: false
-            comments: /Build in/i
+            comments: false
+            // comments: /Build in/i
           }
         },
         extractComments: false

@@ -16,6 +16,7 @@ const CloudStorageWebpackPlugin = require("cloud-storage-webpack-plugin");
 const common = require("./webpack.base.config.js");
 
 module.exports = merge(common, {
+  //   devtool: "source-map",
   module: {
     rules: [
       {
@@ -48,6 +49,7 @@ module.exports = merge(common, {
   },
   plugins: [
     new webpack.ProgressPlugin(),
+    // new webpack.HashedModuleIdsPlugin(),
     new MiniCssExtractPlugin({
       filename: "css/[name].[hash:6].css",
       chunkFilename: "css/[name].[hash:6].css"
@@ -76,7 +78,7 @@ module.exports = merge(common, {
   ],
   optimization: {
     runtimeChunk: {
-      name: "runtime"
+      name: "mainfest"
     },
     minimizer: [
       // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
@@ -95,15 +97,20 @@ module.exports = merge(common, {
     ],
     splitChunks: {
       chunks: "all",
-      minChunks: 3,
+      minChunks: 1,
+      //   minSize: 30000, // 引入模块大于30kb才进行代码分割
+      //   maxSize: 300000, // 引入模块大于300kb时，尝试对引入模块二次拆分引入
+      maxInitialRequests: 5,
+      automaticNameDelimiter: ".",
+      name: false, // vender 数字命名
       cacheGroups: {
-        vendor: {
-          test: /node_modules/,
-          chunks: "initial",
-          name: "vendor",
-          priority: 10,
-          enforce: true
-        },
+        // vendor: {
+        //   test: /node_modules/,
+        //   chunks: "initial",
+        //   name: "vendor",
+        //   priority: 10,
+        //   enforce: true
+        // },
         // packaged css in one file
         styles: {
           name: "styles",
@@ -111,6 +118,21 @@ module.exports = merge(common, {
           chunks: "all",
           minChunks: 1,
           reuseExistingChunk: true,
+          enforce: true
+        },
+        // moment: {
+        //   chunks: "initial",
+        //   test: /[\\/]node_modules[\\/]moment/,
+        //   //   test: /node_modules\/moment/,
+        //   name: "moment",
+        //   priority: -9,
+        //   enforce: true
+        // },
+        vendor: {
+          chunks: "initial",
+          test: /node_modules/,
+          name: "vendor",
+          priority: 10,
           enforce: true
         }
       }
