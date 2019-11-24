@@ -1,9 +1,11 @@
-/**
- * @author Jay
- * @date 2019-4-1
- * @description webpack dll config
- */
+# dll
 
+- react
+- ui
+
+> webpack.dll.config.js
+
+~~~
 const path = require("path");
 const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -17,7 +19,6 @@ module.exports = {
   output: {
     path: path.join(__dirname, "../dll"),
     filename: "[name].dll.js",
-    // library: "[name]_[hash]"
     library: "[name]_libary"
   },
   plugins: [
@@ -30,7 +31,6 @@ module.exports = {
   ],
   optimization: {
     minimizer: [
-      // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
       new TerserPlugin({
         terserOptions: {
           parallel: true,
@@ -38,7 +38,6 @@ module.exports = {
           compress: { warnings: true, drop_console: true },
           output: {
             comments: false
-            // comments: /Build in/i
           }
         },
         extractComments: false
@@ -46,3 +45,26 @@ module.exports = {
     ]
   }
 };
+
+~~~
+
+
+> webpacl.base.config.js
+
+~~~
+new webpack.DllReferencePlugin({
+      manifest: require("../dll/ui.manifest.json")
+}),
+new webpack.DllReferencePlugin({
+    manifest: require("../dll/react.manifest.json")
+}),
+
+
+new AddAssetHtmlPlugin({
+      filepath: path.resolve(__dirname, "../dll/*.dll.js"),
+      outputPath: "js",
+      publicPath: "js",
+      hash: true,
+      includeSourcemap: false
+    }),
+~~~

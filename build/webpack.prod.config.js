@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 /**
- * webpack prod config
+ * @author Jay
+ * @date 2019-4-1
+ * @description webpack prod config
  */
 
 const webpack = require("webpack");

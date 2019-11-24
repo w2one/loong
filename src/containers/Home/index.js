@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "antd-mobile";
 import Style from "./style";
 
 export default // @connect(
@@ -18,6 +19,7 @@ class App extends Component {
     return (
       <div className={Style.home} data-spm="spm-a-home">
         首页
+        <Button type={"primary"}>ant mobile</Button>
       </div>
     );
   }

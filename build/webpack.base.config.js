@@ -1,5 +1,7 @@
 /**
- * webpack base config
+ * @author Jay
+ * @date 2019-4-1
+ * @description webpack base config
  */
 
 const webpack = require("webpack");
@@ -223,8 +225,12 @@ module.exports = {
     }),
     // new CopyPlugin([{ from: "public/static/", to: "static/" }]),
     new webpack.DllReferencePlugin({
+      manifest: require("../dll/ui.manifest.json")
+    }),
+    new webpack.DllReferencePlugin({
       manifest: require("../dll/react.manifest.json")
     }),
+
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "./src/index.html",

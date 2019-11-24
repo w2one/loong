@@ -1,5 +1,7 @@
 /**
- * webpack dev config
+ * @author Jay
+ * @date 2019-4-1
+ * @description webpack dev config
  */
 
 const webpack = require("webpack");

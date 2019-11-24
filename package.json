@@ -1,5 +1,5 @@
 {
-  "name": "react-mobile-es-init",
+  "name": "loong",
   "version": "0.0.1",
   "description": "react mobile es init",
   "scripts": {
@@ -11,7 +11,7 @@
     "build:uat": "cross-env NODE_ENV=production BUILD_ENV=uat webpack --config build/webpack.prod.config.js",
     "build:pr": "cross-env NODE_ENV=production BUILD_ENV=pr webpack --config build/webpack.prod.config.js",
     "build:prod": "cross-env NODE_ENV=production BUILD_ENV=prod webpack --config build/webpack.prod.config.js",
-    "prettier": "prettier --write  \"./**/*.{js,jsx,css,less,md,json}\"",
+    "prettier": "prettier --write  \"./**/*.{js,jsx,css,scss,less,md,json}\"",
     "precommit": "lint-staged",
     "lint": "eslint --fix src",
     "test": "npm run lint"
