@@ -58,7 +58,7 @@ module.exports = merge(common, {
     }),
     // Analyzer bundle
     // new BundleAnalyzerPlugin({
-    //   analyzerPort: 8889
+    //   analyzerPort: 9999
     // }),
     new webpack.BannerPlugin("Build in " + new Date().toLocaleString())
     // zip
