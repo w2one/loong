@@ -10,6 +10,8 @@ import { Toast, Button, Input } from "@components";
 import { createForm } from "rc-form";
 import Style from "./style";
 
+import reactSvg from "@image/react.svg";
+
 function Login(props) {
   const [redirectToReferrer, setRedirectToReferrer] = useState(false);
 
@@ -52,7 +54,7 @@ function Login(props) {
     <>
       <div className={Style.login}>
         <div className={Style.logo}>
-          <img src={require("@image/react.svg")} />
+          <img src={reactSvg} />
         </div>
         <div className={Style.form}>
           {getFieldDecorator("username", {
@@ -90,7 +92,4 @@ const mapDispatchToProps = (dispatch) => ({
   loginAction: bindActionCreators(loginAction, dispatch)
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(createForm()(Login));
+export default connect(mapStateToProps, mapDispatchToProps)(createForm()(Login));
