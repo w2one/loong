@@ -19,6 +19,11 @@ const common = require("./webpack.base.config.js");
 
 module.exports = merge(common, {
   //   devtool: "source-map",
+  output: {
+    filename: "js/[contenthash].js",
+    chunkFilename: "js/[contenthash].js",
+    path: path.resolve(__dirname, "../dist")
+  },
   module: {
     rules: [
       {
@@ -28,7 +33,7 @@ module.exports = merge(common, {
             loader: "url-loader",
             options: {
               limit: 8192,
-              name: "image/[name].[hash:6].[ext]"
+              name: "image/[hash:6].[ext]"
               // outputPath: "image/",
               // publicPath: ".."
             }
@@ -53,14 +58,14 @@ module.exports = merge(common, {
     new webpack.ProgressPlugin(),
     // new webpack.HashedModuleIdsPlugin(),
     new MiniCssExtractPlugin({
-      filename: "css/[name].[hash:6].css",
-      chunkFilename: "css/[name].[hash:6].css"
-    }),
+      filename: "css/[contenthash].css",
+      chunkFilename: "css/[contenthash].css"
+    })
     // Analyzer bundle
     // new BundleAnalyzerPlugin({
     //   analyzerPort: 9999
     // }),
-    new webpack.BannerPlugin("Build in " + new Date().toLocaleString())
+    // new webpack.BannerPlugin("Build in " + new Date().toLocaleString())
     // zip
     // new ZipPlugin({
     //   // path: "../",
@@ -88,10 +93,10 @@ module.exports = merge(common, {
         terserOptions: {
           parallel: true,
           cache: true,
-          compress: { warnings: false, drop_console: true },
+          compress: { warnings: true, drop_console: true },
           output: {
-            // comments: false
-            comments: /Build in/i
+            comments: false
+            // comments: /Build in/i
           }
         },
         extractComments: false

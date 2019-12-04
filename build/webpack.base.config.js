@@ -49,7 +49,14 @@ const postcssLoader =
             }),
             px2rem,
             require("cssnano")({
-              preset: "default"
+              preset: [
+                "default",
+                {
+                  discardComments: {
+                    removeAll: true
+                  }
+                }
+              ]
             })
           ]
         }
