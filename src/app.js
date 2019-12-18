@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import createStore from "./store";
 import App from "./containers";
 import { hot } from "react-hot-loader/root";
-import { Request, API } from "@utils";
+// import { Request, API } from "@utils";
 import ErrorBoundary from "@components/ErrorBoundary";
 import { UserContext } from "@contexts/UserContext";
 import { DictContext } from "@contexts/DictContext";
@@ -21,10 +21,10 @@ class Index extends React.Component {
 
   async componentDidMount() {
     // load dict
-    let response = await Request({
-      url: API.common.dict
-    });
-    response.status && this.setState({ dict: response.result });
+    // let response = await Request({
+    //   url: API.common.dict
+    // });
+    // response.status && this.setState({ dict: response.result });
   }
 
   render() {

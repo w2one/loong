@@ -1,0 +1,17 @@
+.btnPlay {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playIcon {
+  background-image: url(image/video_play.png);
+  width: 1rem;
+  height: 1rem;
+  background-size: cover;
+}

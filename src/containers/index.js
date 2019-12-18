@@ -15,6 +15,7 @@ import Loading from "@components/Loading";
 // lazy load
 const Login = lazy(() => import(/* webpackChunkName: "login" */ "./Login"));
 const Main = lazy(() => import(/* webpackChunkName: "main" */ "./Main"));
+const Video = lazy(() => import(/* webpackChunkName: "Video" */ "./Video"));
 
 function App(props) {
   return (
@@ -22,6 +23,7 @@ function App(props) {
       <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path={`/login`} component={Login} />
+          <Route exact path={`/video`} component={Video} />
           <PrivateRoute path={`/`} component={Main} {...props} />
         </Switch>
       </Suspense>
