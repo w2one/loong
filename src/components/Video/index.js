@@ -10,19 +10,20 @@ export class VideoDemo extends Component {
   state = {
     currentTime: 0,
     paused: true,
-    duration: 0
+    duration: 0,
+    controlsFlag: 0
   };
 
-  componentDidMount() {
-    window.addEventListener("orientationchange", function() {
-      if (window.orientation == 180 || window.orientation == 0) {
-        // alert("竖屏");
-      }
-      if (window.orientation == 90 || window.orientation == -90) {
-        // alert("横屏");
-      }
-    });
-  }
+  // componentDidMount() {
+  //   window.addEventListener("orientationchange", function() {
+  //     if (window.orientation == 180 || window.orientation == 0) {
+  //       // alert("竖屏");
+  //     }
+  //     if (window.orientation == 90 || window.orientation == -90) {
+  //       // alert("横屏");
+  //     }
+  //   });
+  // }
 
   /**
    * play
@@ -34,6 +35,7 @@ export class VideoDemo extends Component {
       this.video.pause();
     }
     this.setState({ paused: this.video.paused, duration: this.video.duration });
+    this.fnResetControls();
   };
 
   /**
@@ -41,20 +43,37 @@ export class VideoDemo extends Component {
    */
   fnUpdate = () => {
     // console.log("time", this.video.currentTime);
-    const { currentTime } = this.state;
-    if (this.video.currentTime - currentTime > 0.3) {
-      this.video.currentTime = currentTime;
-    } else {
-      this.setState({ currentTime: this.video.currentTime });
-    }
+    let { controlsFlag } = this.state;
+
+    // if (this.video.currentTime - currentTime > 0.3) {
+    //   this.video.currentTime = currentTime;
+    // } else {
+    this.setState({ currentTime: this.video.currentTime });
+    // }
     this.setState({ duration: this.video.duration });
+
+    if (controlsFlag >= 0) {
+      let timeout = setTimeout(() => {
+        let { controlsFlag } = this.state;
+        controlsFlag--;
+        this.setState({ controlsFlag });
+        if (controlsFlag === 0) clearTimeout(timeout);
+      }, 1000);
+    }
   };
 
   fnSliderChange = (value) => {
     const { duration } = this.state;
     const currentTime = (value / 100) * duration;
-    this.video.currentTime = currentTime;
-    this.setState({ currentTime });
+    const { drag = true } = this.props;
+    if (drag) {
+      this.video.currentTime = currentTime;
+    }
+    this.fnResetControls();
+  };
+
+  fnResetControls = () => {
+    this.setState({ controlsFlag: 5 });
   };
 
   /**
@@ -64,18 +83,20 @@ export class VideoDemo extends Component {
     console.log("fullscreen");
   };
 
+  fnShow = () => {
+    console.log("show");
+  };
+
   render() {
-    const { paused, currentTime, duration } = this.state;
+    const { paused, currentTime, duration, controlsFlag } = this.state;
     const { data = [], controls = false } = this.props;
     return (
-      <div>
-        <div className="videoPlayer" id="videoContainer">
+      <>
+        <div className={Style.videoPlayer}>
           <video
-            id="video"
-            width="100%"
-            height="auto"
             controls={controls}
             preload
+            loop
             webkitPlaysinline={"true"}
             playsinline={"true"}
             ref={(e) => (this.video = e)}
@@ -85,29 +106,43 @@ export class VideoDemo extends Component {
               <source key={index} src={item} />
             ))}
           </video>
-          <div id="videoControls">
-            <div style={{ padding: "0 .5rem", display: "flex" }}>
-              <div>{formatSeconds(currentTime)}</div>
-              <Slider
-                value={(currentTime / duration) * 100 || 0}
-                onChange={this.fnSliderChange}
-                style={{ margin: "0 15px" }}
-                // onAfterChange={this.onAfterChange}
-              />
-              <div>{formatSeconds(duration)}</div>
-              {/* <button title="FullScreen Toggle" onClick={this.fnFullScreen}>
-                全
-              </button> */}
+
+          {paused && (
+            <div className={Style.mask} onClick={this.fnShow}>
+              {paused && <div className={Style.playIcon} onClick={this.fnPlay}></div>}
             </div>
-            <div></div>
-          </div>
+          )}
+
+          {!paused && (
+            <div
+              style={{ width: "100%" }}
+              className={Style.maskTime}
+              onClick={() => this.setState({ controlsFlag: 5 })}
+            >
+              {controlsFlag > 0 && (
+                <div className={Style.videoControls}>
+                  <div style={{ padding: "0 0.1rem", display: "flex" }}>
+                    <div className={Style.btn} onClick={this.fnPlay}>
+                      {paused ? ">" : "||"}
+                    </div>
+                    <div>{formatSeconds(currentTime)}</div>
+                    <Slider
+                      value={(currentTime / duration) * 100 || 0}
+                      onChange={this.fnSliderChange}
+                      style={{ margin: "0 15px" }}
+                    />
+                    <div>{formatSeconds(duration)}</div>
+                    <div className={Style.btn} onClick={this.fnFullScreen}>
+                      f
+                    </div>
+                  </div>
+                  <div></div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
-        {!controls && (
-          <div className={Style.btnPlay} onClick={this.fnPlay}>
-            {paused ? <div className={Style.playIcon}></div> : ""}
-          </div>
-        )}
-      </div>
+      </>
     );
   }
 }
