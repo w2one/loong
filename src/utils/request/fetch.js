@@ -29,8 +29,9 @@ export default async function({
       }
     };
 
+    if (!url) return;
     // url
-    url = BASE_API + url;
+    url = url.includes("://") || url.includes("json") ? url : BASE_API + url;
 
     //token
     if (Storage.get("token")) {

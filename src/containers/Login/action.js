@@ -9,7 +9,7 @@ export const LOGOUT = "Logout";
 export const loginAction = (data, callback) => async (dispatch) => {
   let response = await Request({
     url: API.common.login,
-    method: "post",
+    // method: "post",
     data,
     headers: { token: data.result }
   });

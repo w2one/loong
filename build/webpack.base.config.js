@@ -8,7 +8,7 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-// const CopyPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ENV = process.env.NODE_ENV || "development";
 const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
@@ -131,7 +131,7 @@ const cssLoader = [
         loader: "css-loader",
         options: {
           // modules: true
-          importLoaders: 1
+          importLoaders: 2
         } // translates CSS into CommonJS
       },
       postcssLoader,
@@ -230,7 +230,7 @@ module.exports = {
     new CleanWebpackPlugin({
       // cleanOnceBeforeBuildPatterns: ["**/*", "!dll/**"]
     }),
-    // new CopyPlugin([{ from: "public/static/", to: "static/" }]),
+    new CopyPlugin([{ from: "src/json/", to: "json/" }]),
     new webpack.DllReferencePlugin({
       manifest: require("../dll/ui.manifest.json")
     }),

@@ -5,8 +5,8 @@
 const api = {
   banner: "home/banner",
   common: {
-    login: "login",
-    dict: "dict",
+    login: "json/login.json",
+    dict: "json/dict.json",
     sms: "sms"
   },
   home: {
