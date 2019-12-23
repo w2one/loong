@@ -1,6 +1,6 @@
 {
   "name": "loong",
-  "version": "0.0.1",
+  "version": "1.0.5",
   "description": "react mobile es init",
   "scripts": {
     "start": "npm run dev",
