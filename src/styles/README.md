@@ -1,4 +1,4 @@
-# 公共样式
+# common style
 
 - index
 - \_rest

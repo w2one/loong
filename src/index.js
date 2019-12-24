@@ -18,7 +18,6 @@ if (process.env.NODE_ENV !== "production" && !location.hostname.includes("192"))
   document.body.appendChild(el);
   eruda.init({
     container: el,
-    // tool: ["console", "elements"],
     useShadowDom: true,
     autoScale: true
   });

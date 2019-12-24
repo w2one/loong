@@ -9,7 +9,7 @@ import { Session as Storage } from "@utils/storage";
 
 /**
  * request
- * @param {*} 请求配置
+ * @param {*} config
  */
 export default async function({
   url,

@@ -1,6 +1,9 @@
 /**
- * store
+ * @author Jay
+ * @date 2017-7-1
+ * @description redux store
  */
+
 import reducers from "../reducers";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";

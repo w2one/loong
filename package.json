@@ -11,14 +11,14 @@
     "build:uat": "cross-env NODE_ENV=production BUILD_ENV=uat webpack --config build/webpack.prod.config.js",
     "build:pr": "cross-env NODE_ENV=production BUILD_ENV=pr webpack --config build/webpack.prod.config.js",
     "build:prod": "cross-env NODE_ENV=production BUILD_ENV=prod webpack --config build/webpack.prod.config.js",
-    "prettier": "prettier --write  \"./**/*.{js,jsx,css,scss,less,md,json}\"",
+    "prettier": "prettier --write  \"./**/*.{js,jsx,css,scss,md,json}\"",
     "precommit": "lint-staged",
     "lint": "eslint --fix src",
     "test": "npm run lint"
   },
   "lint-staged": {
     "src/**/*{js,jsx}": [
-      "prettier --write  \"./**/*.{js,jsx,css,less,md,json}\"",
+      "prettier --write  \"./**/*.{js,jsx,css,scss,md,json}\"",
       "eslint --fix",
       "git add"
     ]
