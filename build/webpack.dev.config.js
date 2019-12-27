@@ -34,6 +34,10 @@ module.exports = merge(common, {
     hotOnly: true,
     open: true,
     disableHostCheck: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    overlay: {
+      warnings: true,
+      errors: true
+    }
   }
 });

@@ -2,7 +2,7 @@
  * error boundary
  */
 import React from "react";
-import "./style";
+import Style from "./style";
 class ErrorBoundary extends React.PureComponent {
   static getDerivedStateFromError(error) {
     // Update state so the next render will show the fallback UI.
@@ -27,9 +27,9 @@ class ErrorBoundary extends React.PureComponent {
     if (this.state.hasError) {
       // You can render any custom fallback UI
       return (
-        <div className="errorPage">
-          <h1>页面出错啦</h1>
-          <button onClick={() => location.reload()}>刷新页面</button>
+        <div className={Style.errorPage}>
+          <h1>This Page Not Available</h1>
+          <button onClick={() => location.reload()}>Reload</button>
         </div>
       );
     }
