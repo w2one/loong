@@ -1,11 +1,14 @@
 /**
  * input
+ *
  */
+
 import React from "react";
 import Style from "./style";
 
 function Input(props) {
-  const { placeholder, onChange, ...rest } = props;
+  // eslint-disable-next-line no-unused-vars
+  const { placeholder, onChange, value, ...rest } = props;
 
   return (
     <div className={Style.input}>
