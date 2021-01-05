@@ -88,7 +88,7 @@
     "@babel/runtime": "^7.7.4",
     "@types/react": "^16.9.17",
     "antd-mobile": "^2.3.1",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "core-js": "^3.4.2",
     "fastclick": "^1.0.6",
     "moment": "^2.24.0",
